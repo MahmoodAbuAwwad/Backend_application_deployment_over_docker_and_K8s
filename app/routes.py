@@ -1,20 +1,32 @@
 from app import app
 import sqlite3
 import json
-
-@app.route('/')
-@app.route('/add')
-def add():
-    conn = sqlite3.connect('todoss.db')
-    c = conn.cursor()
-    c.execute("CREATE TABLE IF NOT EXISTS todo_db (todo text);")
-    c.execute("INSERT INTO todo_db(todo) VALUES(?)",('Hello',))
-    conn.commit()
-    conn.close()
-    return 'x'
+from flask_cors import CORS
+from flask import request
 
 
-@app.route('/fetch')
+CORS(app)
+cors = CORS(app, resources={r"/api/*": {"origins": "*"}})
+
+
+
+
+@app.route('/api/v1/add/<name>',methods=['GET', 'POST'])
+def add(name):
+
+    if request.method == 'POST':
+        name=request.data
+        conn = sqlite3.connect('todoss.db')
+        c = conn.cursor()
+        c.execute("CREATE TABLE IF NOT EXISTS todo_db (todo text);")
+        c.execute("INSERT INTO todo_db(todo) VALUES(?);",(name,))
+        conn.commit()
+        conn.close()
+    return 'Ok'
+
+
+
+@app.route('/api/v1/fetch', methods=['GET', 'POST'])
 def fetch():
     conn = sqlite3.connect('todoss.db')
     c = conn.cursor()
@@ -33,3 +45,4 @@ def fetch():
     # print(list_of_data)
     y = json.dumps(list_of_data)
     return y
+
