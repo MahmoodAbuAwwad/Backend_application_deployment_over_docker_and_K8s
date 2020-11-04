@@ -16,4 +16,4 @@ RUN git clone https://6b9c241e78c2eab34b7f60a9896651abe1a8cf59@github.com/Mahmoo
 RUN pip install -r backend_kubernetes/requirements.txt
 #ADD ./backend_kubernetes/main.py /opt/main.py
 
-ENTRYPOINT FLASK_APP=backend_kubernetes/main.py flask run
+ENTRYPOINT FLASK_APP=backend_kubernetes/main.py flask run 
