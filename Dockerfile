@@ -3,7 +3,7 @@ FROM centos:centos7
 RUN yum update
 RUN yum install -y python
 RUN yum install -y sqlite
-Run yum install -y git
+RUN yum install -y git
 
 RUN yum install -y epel-release
 RUN yum install -y  python-pip
