@@ -24,5 +24,5 @@ RUN pip install gunicorn
 EXPOSE 8000
 EXPOSE 5000
 
-ENTRYPOINT ["gunicorn", "--config", "config.py", "main:app"]
+ENTRYPOINT ["gunicorn","--bind","0.0.0.0:5000", "main:app"]
 
