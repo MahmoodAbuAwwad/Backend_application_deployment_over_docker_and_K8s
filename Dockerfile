@@ -21,8 +21,6 @@ RUN cp -r ./backend_kubernetes/* /app/.
 WORKDIR ./app
 RUN pip install -r requirements.txt
 RUN pip install gunicorn
-EXPOSE 8000
 EXPOSE 5000
 
 ENTRYPOINT ["gunicorn","--bind","0.0.0.0:5000", "main:app"]
-
