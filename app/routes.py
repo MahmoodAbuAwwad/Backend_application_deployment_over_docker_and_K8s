@@ -10,6 +10,7 @@ CORS(app)
 cors = CORS(app, resources={r"/api/*": {"origins": "*"}})
 
 app.config['MYSQL_HOST'] = '192.168.204.226'
+app.config['MYSQL_PORT'] = 6604
 app.config['MYSQL_USER'] = 'flask'
 app.config['MYSQL_PASSWORD'] = 'flask'
 app.config['MYSQL_DB'] = 'backend'
@@ -23,11 +24,17 @@ def add(name):
 
     if request.method == 'POST':
         name=request.data
+
         # conn = sqlite3.connect('todoss.db')
         # c = conn.cursor()
-        # c.execute("CREATE TABLE IF NOT EXISTS todo_db (todo text);")
-        # c.execute("INSERT INTO todo_db(todo) VALUES(?);",(name,))
-        # conn.commit()
+
+        cur = mysql.connection.cursor()
+        cur.execute("CREATE TABLE IF NOT EXISTS todo_db (todo text);")
+        cur.execute("INSERT INTO todo_db(todo) VALUES(?);",(name,))
+        mysql.connection.commit()
+        cur.close()
+       
+         # conn.commit()
         # conn.close()
     return 'Ok'
 
@@ -39,17 +46,22 @@ def fetch():
     # c = conn.cursor()
     # c.execute("CREATE TABLE IF NOT EXISTS todo_db (todo text);")
     
-    # c.execute("SELECT * FROM todo_db;")
-    # data = c.fetchall()
+    c = mysql.connection.cursor()
+    c.execute("CREATE TABLE IF NOT EXISTS todo_db (todo text);")
+    c.execute("SELECT * FROM todo_db;")
+    data = c.fetchall()
+    mysql.connection.commit()
+    c.close()
+          
     # conn.commit()
     # conn.close()
     # print(data)
     
-    # list_of_data =[]
-    # for row in data:
-        # list_of_data.append(row[0])
+    list_of_data =[]
+    for row in data:
+        list_of_data.append(row[0])
         
-    # print(list_of_data)
-    # y = json.dumps(list_of_data)
+    print(list_of_data)
+    y = json.dumps(list_of_data)
     return y
 
