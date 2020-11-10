@@ -3,14 +3,16 @@ import json
 from flask_cors import CORS
 from flask import request
 from flask_mysqldb import MySQL
+import os
+
 
 
 
 CORS(app)
 cors = CORS(app, resources={r"/api/*": {"origins": "*"}})
 
-app.config['MYSQL_HOST'] = '192.168.204.226'
-app.config['MYSQL_PORT'] = 3306
+app.config['MYSQL_HOST'] = os.environ['HOST']
+app.config['MYSQL_PORT'] = os.environ['PORT']
 app.config['MYSQL_USER'] = 'flask'
 app.config['MYSQL_PASSWORD'] = 'flask'
 app.config['MYSQL_DB'] = 'backend'
@@ -44,7 +46,6 @@ def fetch():
     # conn = sqlite3.connect('todoss.db')
     # c = conn.cursor()
     # c.execute("CREATE TABLE IF NOT EXISTS todo_db (todo text);")
-    
     c = mysql.connection.cursor()
     c.execute("CREATE TABLE IF NOT EXISTS todo_db (todo text);")
     c.execute("SELECT * FROM todo_db;")
@@ -60,7 +61,6 @@ def fetch():
     for row in data:
         list_of_data.append(row[0])
         
-    print(list_of_data)
     y = json.dumps(list_of_data)
     return y
 
