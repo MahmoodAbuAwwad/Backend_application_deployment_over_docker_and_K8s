@@ -6,9 +6,11 @@ RUN yum install -y git
 
 
 RUN yum install -y epel-release
-RUN yum install -y  python-pip
+RUN yum install -y python-pip
+RUN yum install -y mariadb mariadb-server mariadb-devel
 RUN pip install --upgrade pip
 RUN pip install flask>=1.1.2
+RUN yum install -y python3.6-dev libmysqlclient-dev
 
 
 #personal token generated
