@@ -2,9 +2,7 @@ FROM centos:centos7
 
 RUN yum update
 RUN yum install -y python
-RUN yum install -y sqlite
 RUN yum install -y git
-RUN yum install -y python-dev default-libmysqlclient-dev libssl-dev
 
 
 RUN yum install -y epel-release
@@ -24,6 +22,8 @@ RUN cp -r ./backend_kubernetes/* /app/.
 WORKDIR ./app
 RUN pip install -r requirements.txt
 RUN pip install gunicorn
+ENV HOST = 192.168.204.226
+ENV PORT = 3306
 EXPOSE 5000
 
 ENTRYPOINT ["gunicorn","--bind","0.0.0.0:5000", "main:app"]
