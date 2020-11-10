@@ -1,22 +1,21 @@
 from app import app
-# import sqlite3
-from flask_mysqldb import MySQL
 import json
 from flask_cors import CORS
 from flask import request
+from flask_mysqldb import MySQL
+
 
 
 CORS(app)
 cors = CORS(app, resources={r"/api/*": {"origins": "*"}})
 
 app.config['MYSQL_HOST'] = '192.168.204.226'
-app.config['MYSQL_PORT'] = 6604
+app.config['MYSQL_PORT'] = 3306
 app.config['MYSQL_USER'] = 'flask'
 app.config['MYSQL_PASSWORD'] = 'flask'
 app.config['MYSQL_DB'] = 'backend'
 app.config['MYSQL_ROOT_PASSWORD'] = 'flask'
 mysql = MySQL(app)
-
 
 
 @app.route('/api/v1/add/<name>',methods=['GET', 'POST'])
