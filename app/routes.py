@@ -20,7 +20,7 @@ cors = CORS(app, resources={r"/api/*": {"origins": "*"}})
 # mysql.init_app(app)
 
 
-db = mysql.connector.connect(user='flask', password='flask',host='192.168.204.226',database='backend')
+db = mysql.connector.connect(user='flask', password='flask',host= os.environ['HOST'],database='backend', port=os.environ['PORT'])
 
 
 
