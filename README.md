@@ -9,10 +9,13 @@ run mysql container
 
 *run new container
 
+
   docker run --name mysql -t --net=host -e MYSQL_DATABASE="backend" -e MYSQL_USER="flask" -e MYSQL_PASSWORD="flask" -e MYSQL_ROOT_PASSWORD="flask" -d mysql
 
 
 *run backend container
+
+
   docker run -d --name backend --net=host -e "PORT=3306" -e "HOST=192.168.204.226" mahmoodabuawwad/backend
 
 
