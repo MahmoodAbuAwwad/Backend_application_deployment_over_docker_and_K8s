@@ -1,10 +1,9 @@
 from app import app
-import json
 from flask_cors import CORS
 from flask import request
 from flask import Flask
 from flaskext.mysql import MySQL
-import os, json, subprocess, yaml
+import os, json
 
 
 
