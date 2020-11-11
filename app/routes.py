@@ -29,7 +29,7 @@ def add(name):
         # conn = sqlite3.connect('todoss.db')
         # c = conn.cursor()
 
-        cur = mysql.connection.cursor()
+        cur = mysql.connect().cursor()
         cur.execute("CREATE TABLE IF NOT EXISTS todo_db (todo text);")
         cur.execute("INSERT INTO todo_db(todo) VALUES(?);",(name,))
         mysql.connection.commit()
@@ -46,7 +46,7 @@ def fetch():
     # conn = sqlite3.connect('todoss.db')
     # c = conn.cursor()
     # c.execute("CREATE TABLE IF NOT EXISTS todo_db (todo text);")
-    c = mysql.connection.cursor()
+    c = mysql.connect().cursor()
     c.execute("CREATE TABLE IF NOT EXISTS todo_db (todo text);")
     c.execute("SELECT * FROM todo_db;")
     data = c.fetchall()
