@@ -27,7 +27,7 @@
   - grant all privileges on backend.* to 'flask';
   - grant all privileges on backend.* to 'root';
 
-- create Deployments and services using flask-dep.yam/flask-ser.yaml/mysql-dep.yam/mysql-ser.yaml
+* create Deployments and services using flask-dep.yam/flask-ser.yaml/mysql-dep.yam/mysql-ser.yaml
 
 
 
