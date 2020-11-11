@@ -16,5 +16,11 @@ spec:
     - name: backend
       image: mahmoodabuawwad/backend
       imagePullPolicy: Always
+      env:
+      - name: HOST
+        value: "192.168.205.155"
+      - name: PORT  # desired in flask-service.yaml
+        value: "30000"
+
       ports:
        - containerPort: 5000
