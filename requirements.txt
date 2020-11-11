@@ -7,3 +7,6 @@ gunicorn
 Flask-SQLAlchemy==2.4.4
 flask-mysql
 cryptography
+pymysql
+mysql-connector-python
+mysqlclient
