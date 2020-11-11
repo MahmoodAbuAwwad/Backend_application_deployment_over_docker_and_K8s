@@ -33,7 +33,7 @@ def add(name):
 
         cur = db.cursor()
         cur.execute("CREATE TABLE IF NOT EXISTS todo_db (todo text);")
-        cur.execute("INSERT INTO todo_db(todo) VALUES(?);",(name,))
+        cur.execute("INSERT INTO todo_db(todo) VALUES(%s);",(name,))
         db.commit()
         db.close()
          # conn.commit()
