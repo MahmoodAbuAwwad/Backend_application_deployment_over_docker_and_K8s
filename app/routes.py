@@ -20,13 +20,11 @@ cors = CORS(app, resources={r"/api/*": {"origins": "*"}})
 # mysql.init_app(app)
 
 
-db = mysql.connector.connect(user='flask', password='flask',host= os.environ['HOST'],database='backend', port=os.environ['PORT'])
-
 
 
 @app.route('/api/v1/add/<name>',methods=['GET', 'POST'])
 def add(name):
-
+    db = mysql.connector.connect(user='flask', password='flask',host= os.environ['HOST'],database='backend', port=os.environ['PORT'])
     if request.method == 'POST':
         name=request.data
 
@@ -46,6 +44,7 @@ def add(name):
 
 @app.route('/api/v1/fetch', methods=['GET', 'POST'])
 def fetch():
+    db = mysql.connector.connect(user='flask', password='flask',host= os.environ['HOST'],database='backend', port=os.environ['PORT'])
     # conn = sqlite3.connect('todoss.db')
     # c = conn.cursor()
     # c.execute("CREATE TABLE IF NOT EXISTS todo_db (todo text);")
