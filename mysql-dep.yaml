@@ -27,4 +27,8 @@ spec:
       imagePullPolicy: Always
       ports:
        - containerPort: 3306
-
+   volumes:
+    - name: test-volume
+      hostPath:
+       path: /var/opt/.
+       type: Directory
