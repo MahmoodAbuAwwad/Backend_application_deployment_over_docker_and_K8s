@@ -37,7 +37,7 @@ def add(name):
         cur.execute("CREATE TABLE IF NOT EXISTS todo_db (todo text);")
         cur.execute("INSERT INTO todo_db(todo) VALUES(?);",(name,))
         db.commit()
-       
+        db.close()
          # conn.commit()
         # conn.close()
     return 'Ok'
@@ -54,7 +54,7 @@ def fetch():
     c.execute("SELECT * FROM todo_db;")
     data = c.fetchall()
     db.commit()
-
+    db.close()
           
     # conn.commit()
     # conn.close()
