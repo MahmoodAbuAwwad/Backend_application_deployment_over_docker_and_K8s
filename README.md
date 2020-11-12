@@ -29,8 +29,12 @@
 
 * create Deployments and services using flask-dep.yam/flask-ser.yaml/mysql-dep.yam/mysql-ser.yaml
 
-
-
+- kubectl create -f flask-config-map.yaml 
+- kubectl create -f mysql-config-map.yaml
+- kubectl create -f mysql-dep.yaml - 
+- kubectl create -f flask-dep.yaml 
+- kubectl apply -f mysql-ser.yaml
+- kubectl apply -f flask-ser.yaml 
 
 
 
