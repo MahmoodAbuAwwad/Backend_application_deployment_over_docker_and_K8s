@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+ name: flask-config
+data:
+ HOST: '192.168.205.155'
+ PORT: '30000'    

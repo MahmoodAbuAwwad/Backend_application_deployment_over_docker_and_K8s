@@ -17,13 +17,26 @@ spec:
       image: mysql
       env:
       - name: MYSQL_DATABASE
-        value: "backend"
+        valueFrom:
+         configMapKeyRef:
+          name: mysql-config
+          key: MYSQL_DATABASE
       - name: MYSQL_ROOT_PASSWORD
-        value: "flask"
+        valueFrom:           
+         configMapKeyRef:
+          name: mysql-config
+          key: MYSQL_ROOT_PASSWORD
       - name: MYSQL_PASSWORD
-        value: "flask"
+        valueFrom:           
+         configMapKeyRef:
+          name: mysql-config
+          key: MYSQL_PASSWORD
       - name: MYSQL_USER
-        value: "flask"
+        valueFrom:           
+         configMapKeyRef:
+          name: mysql-config
+          key: MYSQL_USER
+     
       imagePullPolicy: Always
       ports:
        - containerPort: 3306
@@ -31,4 +44,3 @@ spec:
     - name: test-volume
       hostPath:
        path: /var/opt/.
-       type: Directory

@@ -18,9 +18,15 @@ spec:
       imagePullPolicy: Always
       env:
       - name: HOST
-        value: "192.168.205.155"
-      - name: PORT  # desired in flask-service.yaml
-        value: "30000"
+        valueFrom:
+         configMapKeyRef:
+          name: flask-config
+          key: HOST
+      - name: PORT
+        valueFrom:
+         configMapKeyRef:
+          name: flask-config
+          key: PORT
 
       ports:
        - containerPort: 5000
