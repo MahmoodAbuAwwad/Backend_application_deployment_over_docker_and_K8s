@@ -2,6 +2,7 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
  name: mysql-config
+ namespace: mahmood
 data:
  MYSQL_DATABASE: backend
  MYSQL_ROOT_PASSWORD: flask

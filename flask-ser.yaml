@@ -4,6 +4,7 @@ metadata:
   labels:
     service-label-key: flask
   name: backend-service
+  namespace: mahmood
 spec:
   type: NodePort
   selector:
