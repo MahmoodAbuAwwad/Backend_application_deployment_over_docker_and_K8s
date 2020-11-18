@@ -22,7 +22,7 @@
   docker run -d --name backend --net=host -e "PORT=3306" -e "HOST=192.168.204.226" mahmoodabuawwad/backend
 
 
-* if errors occured, u may need to execute the follwing to get the right permissions in mysql container
+* if any sql errors occured, u may need to change the permissions in mysql container
   - docker exec -it mysql mysql -p -u root 
   - grant all privileges on backend.* to 'flask';
   - grant all privileges on backend.* to 'root';
